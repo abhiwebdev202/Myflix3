@@ -21,7 +21,7 @@ services:
       POSTGRES_USER: fl0user
       POSTGRES_PASSWORD: wWsOPEZrb6S3
     ports:
-      - "5432:5432"
+      - "5433:5432"
     hostname: ep-lively-water-15585024.eu-central-1.aws.neon.fl0.io
 
 networks:
