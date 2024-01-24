@@ -84,9 +84,13 @@ WSGI_APPLICATION = 'Myflixproject.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+      'default': {
+        'ENGINE': 'django.db.backends.postgersql_psycopg2',
+        'NAME': 'myflix-database',
+        'USER': 'fl0user',
+        'PASSWORD': 'wWsOPEZrb6S3',
+        'HOST': 'ep-lively-water-15585024.eu-central-1.aws.neon.fl0.io',
+        'PORT': '5432',
     }
 }
 
@@ -144,42 +148,13 @@ AUTHENTICATION_BACKENDS = [
 
 AUTH_USER_MODEL = 'myflixapp.CustomUser'
 
-#STATIC_URL = 'static/'
-#STATIC_ROOT = '/app/Netflix-Clone-Myflix/netclone/Myflix/Myflixproject/static/assets/'
-#STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_URL = 'static/'
+STATIC_ROOT = '/app/Netflix-Clone-Myflix/netclone/Myflix/Myflixproject/static/assets/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-#MEDIA_URL = '/media/'
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 
-AWS_STORAGE_BUCKET_NAME = 'static-files-3'
-AWS_S3_REGION_NAME = 'us-east-1'  # e.g., us-east-1
-
-# Optional: Set the AWS S3 custom domain
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-
-# Use Amazon S3 for storage for uploaded media files.
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-# Use Amazon S3 for static files storage.
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-# Static files (CSS, JavaScript, images)
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
-
-# Media files (uploaded by users)
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
-
-try:
-    # Try to use the IAM role associated with the EC2 instance
-    session = boto3.Session()
-    credentials = session.get_credentials()
-
-    AWS_ACCESS_KEY_ID = credentials.access_key
-    AWS_SECRET_ACCESS_KEY = credentials.secret_key
-except NoCredentialsError:
-    # Handle the case where credentials are not available
-    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
 LOGIN_URL = 'login'
 
