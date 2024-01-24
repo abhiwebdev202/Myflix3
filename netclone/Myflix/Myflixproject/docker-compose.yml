@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  web:
+    image: myflix3:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=your_project.settings.prod
+    volumes:
+      - /path/on/ec2/media:/app/media
+      - /path/on/ec2/static:/app/static
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    driver: bridge
