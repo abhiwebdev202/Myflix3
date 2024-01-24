@@ -8,8 +8,8 @@ services:
     environment:
       - DJANGO_SETTINGS_MODULE=Myflix3.netclone.Myflix.Myflixproject.Myflixproject.settings.prod
     volumes:
-      - /path/on/ec2/media:/app/media
-      - /path/on/ec2/static:/app/static
+      - /Myflix3/netclone/Myflix/Myflixproject/static/assets/media:/assets/media
+      - /Myflix3/netclone/Myflix/Myflixproject/static:/Myflixproject/static
     networks:
       - app-net
 
