@@ -6,7 +6,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DJANGO_SETTINGS_MODULE=your_project.settings.prod
+      - DJANGO_SETTINGS_MODULE=Myflix3.netclone.Myflix.Myflixproject.Myflixproject.settings.prod
     volumes:
       - /path/on/ec2/media:/app/media
       - /path/on/ec2/static:/app/static
