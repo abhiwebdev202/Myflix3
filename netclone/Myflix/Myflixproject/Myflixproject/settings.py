@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'Myflixproject.wsgi.application'
 
 DATABASES = {
       'default': {
-        'ENGINE': 'django.db.backends.postgersql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'myflix-database',
         'USER': 'fl0user',
         'PASSWORD': 'wWsOPEZrb6S3',
