@@ -85,9 +85,8 @@ WSGI_APPLICATION = 'Myflixproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'ENFORCE_SCHEMA': False,  # Set this to False if you want to create dynamic schemas in MongoDB
-        'NAME': 'db_myflix',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
