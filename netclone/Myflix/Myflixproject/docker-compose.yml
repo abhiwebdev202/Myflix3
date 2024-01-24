@@ -3,16 +3,28 @@ version: '3'
 services:
   web:
     image: myflix3:latest
+    command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
-    environment:
-      - DJANGO_SETTINGS_MODULE=Myflixproject.settings.prod  # Adjust the path accordingly
+    depends_on:
+      - postgres
     volumes:
       - /Myflix3/netclone/Myflix/Myflixproject/static/assets/media:/assets/media
       - /Myflix3/netclone/Myflix/Myflixproject/static:/Myflixproject/static
     networks:
       - app-net
 
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: myflix-database
+      POSTGRES_USER: fl0user
+      POSTGRES_PASSWORD: wWsOPEZrb6S3
+    ports:
+      - "5432:5432"
+    hostname: ep-lively-water-15585024.eu-central-1.aws.neon.fl0.io
+
 networks:
   app-net:
     driver: bridge
+
